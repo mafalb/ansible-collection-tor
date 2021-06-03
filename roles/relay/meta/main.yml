@@ -16,8 +16,8 @@ galaxy_info:
     - 8
   - name: Fedora
     versions:
-    - 32
     - 33
+    - 34
   - name: Ubuntu
     versions:
     - xenial
@@ -29,7 +29,7 @@ galaxy_info:
     - buster
 
   galaxy_tags:
-  - relay
+  - tor
 
 dependencies: []
 
