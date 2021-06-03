@@ -4,6 +4,7 @@
 - name: epel is present
   package:
     name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    disable_gpg_check: true
   when: tor_relay_needs_epel|default(false)
 
 - name: tor relay is installed
