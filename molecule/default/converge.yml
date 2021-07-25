@@ -8,8 +8,30 @@
     http_proxy: http://ci-proxy:3128
     https_proxy: http://ci-proxy:3128
 
-  roles:
+#  roles:
+#
+#  - role: mafalb.epel.release
+#  - role: mafalb.tor.relay
 
-  - role: mafalb.tor.relay
+  tasks:
+  
+  - name: install epel
+    include_role:
+      name: mafalb.epel.release
+      allow_duplicates: no
+
+  - name: install epel 2
+    include_role:
+      name: mafalb.epel.release
+      allow_duplicates: no
+
+  - name: install roles
+    include_role:
+      name: "{{ outer_item }}"
+      allow_duplicates: false
+    loop:
+    - mafalb.tor.relay
+    loop_control:
+      loop_var: outer_item
 
 ...

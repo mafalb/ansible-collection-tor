@@ -1,19 +1,14 @@
 # vim: set ft=yaml ts=2 expandtab:
 ---
 
-- name: get OS specific variables
-  with_first_found:
-  - "{{ ansible_distribution }}.yml"
-  - "{{ ansible_os_family }}.yml"
-  include_vars:
-    file: "{{ item }}"
+- name: epel is present
+  include_role:
+    name: mafalb.epel.release
+    allow_duplicates: no
+  when: tor_relay_needs_epel|default(false)
 
-- name: assertions
-  assert:
-    that:
-    - tor_relay_state in [ 'present', 'absent' ]
-
-- name: include_tasks for {{ tor_relay_state }}
-  include_tasks: "{{ tor_relay_state }}.yml"
+- name: tor relay is installed
+  package:
+    name: tor
 
 ...
