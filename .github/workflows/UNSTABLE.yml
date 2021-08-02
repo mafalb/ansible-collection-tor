@@ -66,14 +66,14 @@ jobs:
  
     defaults:
       run:
-        working-directory: ansible_collections/mafalb/mariadb
+        working-directory: ansible_collections/mafalb/tor
 
     steps:
 
-    - name: checkout collection mafalb.mariadb
+    - name: checkout collection mafalb.tor
       uses: actions/checkout@v2
       with:
-        path: ansible_collections/mafalb/mariadb
+        path: ansible_collections/mafalb/tor
 
     # use the github actions ansible
     #
